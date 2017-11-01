@@ -1,0 +1,99 @@
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# you'll amass, the slower it'll run and the greater likelihood for issues).
+#
+# It's strongly recommended that you check this file into your version control system.
+
+ActiveRecord::Schema.define(version: 20171101144639) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_categories_on_name", unique: true
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_countries_on_name", unique: true
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "address", null: false
+    t.string "postal_code", null: false
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.integer "country_id", null: false
+    t.integer "province_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_customers_on_country_id"
+    t.index ["email"], name: "index_customers_on_email", unique: true
+    t.index ["province_id"], name: "index_customers_on_province_id"
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "quantity", null: false
+    t.float "price", null: false
+    t.integer "product_id", null: false
+    t.integer "order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.float "pst_rate", null: false
+    t.float "gst_rate", null: false
+    t.float "hst_rate", null: false
+    t.integer "status_id", null: false
+    t.integer "customer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
+    t.index ["status_id"], name: "index_orders_on_status_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.float "price", null: false
+    t.integer "stock_quantity", null: false
+    t.integer "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["name", "category_id"], name: "index_products_on_name_and_category_id", unique: true
+  end
+
+  create_table "provinces", force: :cascade do |t|
+    t.string "name", null: false
+    t.float "pst", null: false
+    t.float "gst", null: false
+    t.float "hst", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_provinces_on_name", unique: true
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_statuses_on_title", unique: true
+  end
+
+end
