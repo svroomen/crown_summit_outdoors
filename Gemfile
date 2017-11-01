@@ -77,3 +77,7 @@ gem 'jquery-rails'
 
 # linting / style checks
 gem 'rubocop', '~> 0.51.0', require: false
+
+# ActiveAdmin
+gem 'activeadmin', github: 'activeadmin'
+gem 'devise'
