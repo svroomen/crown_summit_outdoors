@@ -10,13 +10,27 @@ class Product < ApplicationRecord
                     }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
-  validates_presence_of :name, :description, :price, :stock_quantity, :category
+  validates_presence_of :name, :description, :price, :stock_quantity,
+                        :category, :gender
   validates_uniqueness_of :name, scope: :category
+
+  # gender constants
+  MALE = 'Male'.freeze
+  FEMALE = 'Female'.freeze
+  UNISEX = 'Unisex'.freeze
 
   def image_attributes=(attributes)
     # Marks the attachment for destruction on next save,
     # if the attributes hash contains a _destroy flag
     # and a new image was not uploaded at the same time:
     image.clear if has_destroy_flag?(attributes) && !image.dirty?
+  end
+
+  def self.gender_options
+    [
+      ['Male', Product::MALE],
+      ['Female', Product::FEMALE],
+      ['Unisex', Product::UNISEX]
+    ]
   end
 end
