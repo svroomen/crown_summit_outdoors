@@ -81,3 +81,6 @@ gem 'rubocop', '~> 0.51.0', require: false
 # ActiveAdmin
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
+
+# File Uploads
+gem 'paperclip', '~> 5.1'
