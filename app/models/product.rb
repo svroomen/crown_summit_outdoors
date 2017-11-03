@@ -19,6 +19,10 @@ class Product < ApplicationRecord
   FEMALE = 'Female'.freeze
   UNISEX = 'Unisex'.freeze
 
+  # size type constants
+  FOOTWEAR_SIZE_TYPE = 'Footwear'.freeze
+  CLOTHING_SIZE_TYPE = 'Clothing'.freeze
+
   def image_attributes=(attributes)
     # Marks the attachment for destruction on next save,
     # if the attributes hash contains a _destroy flag
@@ -32,5 +36,33 @@ class Product < ApplicationRecord
       ['Female', Product::FEMALE],
       ['Unisex', Product::UNISEX]
     ]
+  end
+
+  def self.product_size_types
+    [
+      ['Clothing', Product::CLOTHING_SIZE_TYPE],
+      ['Footwear', Product::FOOTWEAR_SIZE_TYPE]
+    ]
+  end
+
+  def self.footwear_sizes
+    [%w[7 7],
+     %w[8 8],
+     %w[9 9],
+     %w[10 10],
+     %w[11 11],
+     %w[12 12],
+     %w[13 13],
+     %w[14 14],
+     %w[15 15]]
+  end
+
+  def self.clothing_sizes
+    [%w[XS Extra Small],
+     %w[S Small],
+     %w[M Medium],
+     %w[L Large],
+     %w[XL Extra Large],
+     %w[2XL Double Extra Large]]
   end
 end

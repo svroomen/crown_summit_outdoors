@@ -4,7 +4,7 @@ ActiveAdmin.register Product do
   end
 
   permit_params :name, :description, :price, :stock_quantity, :gender,
-                :category_id, :image, image_attributes: [:_destroy]
+                :category_id, :size_type, :image, image_attributes: [:_destroy]
 
   index as: :grid, columns: 3 do |product|
     div link_to image_tag(product.image(:thumb), size: '115x115'),
@@ -30,6 +30,7 @@ ActiveAdmin.register Product do
     attributes_table do
       row :name
       row :category
+      row :size_type
       row :gender
       row :description
       row :price
@@ -46,6 +47,8 @@ ActiveAdmin.register Product do
     f.inputs do
       f.input :name, required: true
       f.input :category, prompt: 'Please select a category', required: true
+      f.input :size_type, as: :select, collection: Product.product_size_types,
+                          required: true, prompt: 'Please select a size type'
       f.input :gender, as: :select, collection: Product.gender_options,
                        required: true, prompt: 'Please select a gender'
       f.input :description, required: true

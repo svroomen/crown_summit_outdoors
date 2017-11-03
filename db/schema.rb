@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171102145413) do
+ActiveRecord::Schema.define(version: 20171103111942) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20171102145413) do
     t.integer "order_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "size"
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["product_id"], name: "index_order_items_on_product_id"
   end
@@ -110,6 +111,7 @@ ActiveRecord::Schema.define(version: 20171102145413) do
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.string "gender", null: false
+    t.string "size_type"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["name", "category_id"], name: "index_products_on_name_and_category_id", unique: true
   end
