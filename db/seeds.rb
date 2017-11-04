@@ -11,3 +11,20 @@ if Rails.env == 'development'
     password_confirmation: 'password'
   )
 end
+
+# category data
+Seeds::Categories.seed_categories
+
+# status data
+Seeds::Statuses.seed_statuses
+
+# product data
+Seeds::Products::ClothingProducts.seed_products
+Seeds::Products::FootwearProducts.seed_products
+Seeds::Products::AccessoryProducts.seed_products
+
+# country data
+Seeds::Countries.seed_countries
+
+# province data
+Seeds::Provinces.seed_provinces

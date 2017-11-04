@@ -40,6 +40,7 @@ class Product < ApplicationRecord
 
   def self.product_size_types
     [
+      ['None', nil],
       ['Clothing', Product::CLOTHING_SIZE_TYPE],
       ['Footwear', Product::FOOTWEAR_SIZE_TYPE]
     ]

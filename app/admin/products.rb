@@ -1,18 +1,14 @@
 ActiveAdmin.register Product do
-  ActiveAdmin.setup do |config|
-    config.default_per_page = 20
-  end
-
   permit_params :name, :description, :price, :stock_quantity, :gender,
                 :category_id, :size_type, :image, image_attributes: [:_destroy]
 
-  index as: :grid, columns: 3 do |product|
+  index as: :grid, columns: 3, default: true do |product|
     div link_to image_tag(product.image(:thumb), size: '115x115'),
                 admin_product_path(product)
     div link_to product.name, admin_product_path(product)
   end
 
-  index default: true do
+  index do
     table
     selectable_column
     id_column
