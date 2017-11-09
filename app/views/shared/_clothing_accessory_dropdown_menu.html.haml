@@ -1,0 +1,18 @@
+%li.layout-dropdown
+  %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+    = g_header.upcase
+  %ul.dropdown-menu
+    %li.dropdown-header= "#{g_header}'s Clothing"
+    %li= link_to Category::HOODIES, products_path(category_name: Category::HOODIES, gender: gender)
+    %li= link_to Category::SWEATERS, products_path(category_name: Category::SWEATERS, gender: gender)
+    %li= link_to Category::TOPS, products_path(category_name: Category::TOPS, gender: gender)
+    %li= link_to Category::SHORTS, products_path(category_name: Category::SHORTS, gender: gender)
+    %li= link_to Category::PANTS_AND_TIGHTS, products_path(category_name: Category::PANTS_AND_TIGHTS, gender: gender)
+    %li= link_to Category::UNDERWEAR_AND_BASELAYER, products_path(category_name: Category::UNDERWEAR_AND_BASELAYER, gender: gender)
+    %li.divider{:role => 'separator'}
+    %li.dropdown-header= "#{g_header}'s Outdoor Accessories"
+    %li= link_to Category::WINTER_GLOVES_AND_MITTS, products_path(category_name: Category::WINTER_GLOVES_AND_MITTS, gender: gender)
+    %li= link_to Category::TOQUES_AND_BALACLAVAS, products_path(category_name: Category::TOQUES_AND_BALACLAVAS, gender: gender)
+    %li= link_to Category::HATS_AND_CAPS, products_path(category_name: Category::HATS_AND_CAPS, gender: gender)
+    %li.divider{:role => 'separator'}
+    %li= link_to "All #{g_header}'s Clothing/Accessories", products_path(size_type: Product::CLOTHING_SIZE_TYPE, gender: gender)

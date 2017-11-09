@@ -1,0 +1,17 @@
+%li.layout-dropdown
+  %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+    FOOTWEAR
+  %ul.dropdown-menu
+    %li.dropdown-header= "Men's Footwear"
+    %li= link_to Category::HIKING_BOOTS, products_path(category_name: Category::HIKING_BOOTS, gender: Product::MALE)
+    %li= link_to Category::WINTER_BOOTS, products_path(category_name: Category::WINTER_BOOTS, gender: Product::MALE)
+    %li= link_to Category::HIKING_SHOES, products_path(category_name: Category::HIKING_SHOES, gender: Product::MALE)
+    %li= link_to Category::RUNNING_SHOES, products_path(category_name: Category::RUNNING_SHOES, gender: Product::MALE)
+    %li= link_to "All Men's Footwear", products_path(size_type: Product::FOOTWEAR_SIZE_TYPE, gender: Product::MALE)
+    %li.divider{:role => 'separator'}
+    %li.dropdown-header= "Women's Footwear"
+    %li= link_to Category::HIKING_BOOTS, products_path(category_name: Category::HIKING_BOOTS, gender: Product::FEMALE)
+    %li= link_to Category::WINTER_BOOTS, products_path(category_name: Category::WINTER_BOOTS, gender: Product::FEMALE)
+    %li= link_to Category::HIKING_SHOES, products_path(category_name: Category::HIKING_SHOES, gender: Product::FEMALE)
+    %li= link_to Category::RUNNING_SHOES, products_path(category_name: Category::RUNNING_SHOES, gender: Product::FEMALE)
+    %li= link_to "All Women's Footwear", products_path(size_type: Product::FOOTWEAR_SIZE_TYPE, gender: Product::FEMALE)
