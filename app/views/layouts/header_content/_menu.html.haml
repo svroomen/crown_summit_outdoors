@@ -1,0 +1,15 @@
+%nav.navbar.navbar-default.navbar-custom
+  .container
+    .navbar-header
+      %button.custom-navbar-burger.navbar-toggle.pull-left.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to 'Crown Summit Outdoors', root_path, :class => 'navbar-brand'
+    #navbar.navbar-collapse.collapse
+      %ul.nav.navbar-nav
+        = render partial: 'layouts/header_content/clothing_accessory_dropdown_menu', locals: {gender: Product::MALE, g_header: 'Men'}
+        = render partial: 'layouts/header_content/clothing_accessory_dropdown_menu', locals: {gender: Product::FEMALE, g_header: 'Women'}
+        = render partial: 'layouts/header_content/footwear_dropdown_menu'
+      = render partial: 'layouts/header_content/search_form'

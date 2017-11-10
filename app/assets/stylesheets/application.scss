@@ -16,26 +16,78 @@
 @import "bootstrap";
 @import "font-awesome";
 
-body {
-  padding-top: 70px;
-}
-
-.layout-dropdown {
-  @extend .dropdown;
-
-  .dropdown-header {
-    font-size: 16px;
-    color: #000;
-  }
-
-  li {
-    color: #777;
-  }
-}
-
 @media (min-width: 768px) {
   .navbar-custom .layout-dropdown:hover .dropdown-menu {
     display: block;
     margin-top: 0;
+  }
+}
+
+header {
+  min-width: 100%;
+  position: relative;
+  background-color: #333;
+
+  .navbar-default .navbar-brand {
+    color: #000000;
+  }
+
+  .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: #000000;
+  }
+
+  .custom-navbar-burger {
+    margin-left: 13px;
+  }
+
+  .shop-sign-in-container {
+    font-size: 12px;
+    @extend .container;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #DADADA;
+
+    p {
+      padding: 0;
+      margin: 0;
+    }
+
+    a {
+      color: #DADADA;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    .fa-shopping-cart {
+      color: #f3cf1e;
+    }
+
+    .cart-item-count {
+      color: #f3cf1e;
+    }
+
+    .sign-in {
+      padding-right: 20px;
+    }
+  }
+
+  .navbar-custom {
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+
+  .layout-dropdown {
+    @extend .dropdown;
+
+    .dropdown-header {
+      font-size: 16px;
+      color: #000;
+    }
+
+    li {
+      color: #777;
+    }
   }
 }
