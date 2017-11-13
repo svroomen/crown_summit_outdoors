@@ -15,6 +15,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+@import "style_sheets/*";
 
 @media (min-width: 768px) {
   .navbar-custom .layout-dropdown:hover .dropdown-menu {
@@ -90,4 +91,29 @@ header {
       color: #777;
     }
   }
+
+  #customer-option-list {
+    display: inline;
+
+    a:hover {
+      cursor: pointer;
+    }
+
+    ul li a {
+      color: #000;
+    }
+  }
+}
+
+.new-customer-option {
+  margin-left: 15px;
+}
+
+.log-in-option {
+  margin-right: 15px;
+}
+
+.form-group.required .control-label:after {
+  content:"*";
+  color: #FF0000;
 }

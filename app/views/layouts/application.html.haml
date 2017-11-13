@@ -10,4 +10,5 @@
   %body
     = render partial: 'layouts/header_content/header'
     .container
+      = render partial: 'shared/flash_messages', flash: flash
       = yield

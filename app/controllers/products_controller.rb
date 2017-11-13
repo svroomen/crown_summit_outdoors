@@ -1,3 +1,4 @@
+# used to view products
 class ProductsController < ApplicationController
   def index
 

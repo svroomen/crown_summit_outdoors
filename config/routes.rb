@@ -5,6 +5,11 @@ Rails.application.routes.draw do
 
   root 'home#index'
   resources :home, only: :index
-  resources :customers
+  resources :customers, except: %i[index destroy]
   resources :products, only: %i[index show]
+
+  # log in routes
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
 end
