@@ -1,3 +1,48 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.product-preview {
+  margin: 5px 20px 5px 20px;
+}
+
+.product-container {
+  @extend .table-bordered;
+  height: 450px;
+  min-width: 100%;
+  margin-bottom: 20px;
+
+  hr {
+    margin-bottom: 0;
+  }
+
+  .product-preview-info {
+    padding: 10px;
+  }
+
+  a {
+    color: #000;
+  }
+
+  a:hover {
+    color: #000;
+    text-decoration: none;
+  }
+}
+
+.image-preview-container {
+  @extend .text-center;
+  max-height: 280px;
+  min-height: 280px;
+  height: 280px;
+  min-width: 100%;
+
+  a {
+    min-width: 100%;
+    width: 100%;
+
+    img {
+      max-width: 292px;
+    }
+  }
+}

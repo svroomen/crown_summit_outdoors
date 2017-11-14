@@ -1,0 +1,8 @@
+%h2 Products
+
+.row
+  - @product_search.products.each do |product|
+    = render :partial => 'products/product_preview', :object => product, :as => :product
+
+= will_paginate @product_search.products, renderer: BootstrapPagination::Rails
+
