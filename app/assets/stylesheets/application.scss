@@ -44,8 +44,8 @@ header {
   .shop-sign-in-container {
     font-size: 12px;
     @extend .container;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 7px;
+    padding-bottom: 7px;
     color: #DADADA;
 
     p {
@@ -94,9 +94,11 @@ header {
 
   #customer-option-list {
     display: inline;
+    padding-right: 20px;
 
-    a:hover {
+    a:hover, a:active, a:visited, a:focus {
       cursor: pointer;
+      text-decoration: none;
     }
 
     ul li a {

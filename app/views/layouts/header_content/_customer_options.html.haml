@@ -1,7 +1,7 @@
 .dropdown#customer-option-list
-  %a.dropdown-toggle#customer-options{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
     = current_customer.full_name
-    %span.caret
+    %b.caret
   %ul.dropdown-menu{"aria-labelledby" => "customer-options"}
     %li
       = link_to customer_path(current_customer.id) do
