@@ -1,8 +1,14 @@
 %h2 Products
 
 .row
-  - @product_search.products.each do |product|
-    = render :partial => 'products/product_preview', :object => product, :as => :product
+  - if @product_search.products.blank?
+    .col-md-12
+      .text-center
+        %h3 NO RESULTS FOUND
+        %h3 PLEASE TRY ANOTHER SEARCH
+  - else
+    - @product_search.products.each do |product|
+      = render :partial => 'products/product_preview', :object => product, :as => :product
 
 = will_paginate @product_search.products, renderer: BootstrapPagination::Rails
 

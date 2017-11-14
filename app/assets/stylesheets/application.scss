@@ -24,6 +24,21 @@
   }
 }
 
+@media (max-width: 768px) {
+  form .input-group.category-search-drop-down {
+    padding-bottom: 5px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 991px) {
+  form.navbar-form.navbar-right {
+    float: left !important;
+    margin-left: -15px;
+    padding-left: 0;
+  }
+}
+
 header {
   min-width: 100%;
   position: relative;
