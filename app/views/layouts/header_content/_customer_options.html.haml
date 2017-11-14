@@ -6,9 +6,9 @@
     %li
       = link_to customer_path(current_customer.id) do
         %i.fa.fa-user-circle-o
-        Profile
+        Account
     %li.divider{:role => "separator"}
     %li
       = link_to logout_path, method: :delete do
         %i.fa.fa-sign-out
-        Log Out
+        Sign Out

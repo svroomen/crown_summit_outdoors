@@ -5,7 +5,7 @@
     - if logged_in?
       = render partial: 'layouts/header_content/customer_options'
     - else
-      = link_to 'Sign in / Create Account', login_path, class: 'sign-in'
+      = link_to 'Sign In / Create Account', login_path, class: 'sign-in'
     = link_to :back, class: 'inline-block' do
       %i.fa.fa-shopping-cart.fa-lg
       %span.cart-item-count 0

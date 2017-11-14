@@ -1,6 +1,10 @@
 .row
   .col-md-6.col-md-offset-3
-    %h2 Account Information
+    %h2
+      Account Details
+      = link_to edit_customer_path(id: @customer.id), id: 'account-details-edit-link' do
+        %i.fa.fa-edit
+        Edit
     .row
       .col-md-2
         %p

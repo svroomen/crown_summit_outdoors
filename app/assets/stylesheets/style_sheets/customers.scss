@@ -6,3 +6,10 @@
   @extend .btn-group;
   padding-right: 15px;
 }
+
+#account-details-edit-link {
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding-left: 10px;
+}
