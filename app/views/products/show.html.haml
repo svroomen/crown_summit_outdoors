@@ -1,0 +1,49 @@
+%h2= @product.name
+
+.row
+  .col-md-6
+    = image_tag "#{@product.image}", width: '100%', height: '100%'
+  .col-md-2
+  .col-md-4
+    .panel.panel-default.product-detail-options
+      .panel-heading
+        .text-center
+          %h4 Free Standard Shipping *
+      .panel-body
+        %h3
+          %strong= "$#{@product.price}"
+
+        %hr
+
+        = form_for :session, url: add_item_to_cart_path, html: { class: 'form form-horizontal' } do |f|
+          .row
+            = hidden_field_tag :product_id, @product.id
+            .col-xs-12.col-md-6
+              .form-group
+                %label.control-label Size:
+                = f.select :size, @product.size_type == clothing_type ? clothing_size_options : footwear_size_options, {}, {class: 'form-control option-drop-down-left'}
+            .col-xs-12.col-md-6
+              .form-group
+                %label.control-label Quantity:
+                = f.select :size, quantity_options, {}, {class: 'form-control'}
+          .form-group
+            = button_tag type: :submit, class: 'btn btn-success', id: 'add-to-cart' do
+              %i.fa.fa-plus
+              ADD TO CART
+      .panel-footer
+        %ul
+          %li
+            %strong Shipping Note:
+            Leaves the warehouse in as little as 1 business day. See Shipping Info and Online Return Policy for details.
+
+.row
+  .col-md-8
+    %h3
+      %i.fa.fa-file-text-o
+      DESCRIPTION
+
+    %hr
+
+    %p= @product.description
+
+    %hr

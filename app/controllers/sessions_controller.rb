@@ -20,4 +20,8 @@ class SessionsController < ApplicationController
     flash[:notice] = 'Logged out successfully'
     redirect_to home_index_path
   end
+
+  def add_item_to_cart
+
+  end
 end

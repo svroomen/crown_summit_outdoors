@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+
+  # cart specific routes
+  post '/add_item_to_cart', to: 'sessions#add_item_to_cart'
 end
