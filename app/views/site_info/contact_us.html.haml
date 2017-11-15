@@ -1,0 +1,16 @@
+.row
+  .col-md-6.col-md-offset-3
+    %h2 Contact Us
+    %hr
+    %h4 ONLINE STORE CUSTOMER SERVICE
+    %p= @site_info.customer_service_message
+    %h4.underline-heading Hours of Operation
+    - @site_info.hours.split('/').each do |hour|
+      %p= hour
+    %h4.underline-heading Locations
+    - @site_info.locations.split('/').each do |location|
+      %p= location
+    %p
+      %strong= "Call: #{@site_info.phone}"
+    %p
+      %strong= "Email: #{@site_info.email}"

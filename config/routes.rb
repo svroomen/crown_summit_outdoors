@@ -9,10 +9,14 @@ Rails.application.routes.draw do
   resources :products, only: %i[index show]
 
   # log in routes
-  get    '/login',   to: 'sessions#new'
-  post   '/login',   to: 'sessions#create'
-  delete '/logout',  to: 'sessions#destroy'
+  get    '/sign_in',   to: 'sessions#new'
+  post   '/sign_in',   to: 'sessions#create'
+  delete '/sign_out',  to: 'sessions#destroy'
 
   # cart specific routes
   post '/add_item_to_cart', to: 'sessions#add_item_to_cart'
+
+  # contact and about us routes
+  get '/contact_us', to: 'site_info#contact_us'
+  get '/about_us', to: 'site_info#about_us'
 end

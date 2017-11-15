@@ -2,7 +2,13 @@
   .container#footer-content
     .footer-content-area
       -# This area is for placing links such as contact us, and about us
-
+      = link_to contact_us_path do
+        %i.fa.fa-address-book-o
+        Contact Us
+      |
+      = link_to about_us_path do
+        %i.fa.fa-book
+        About Us
     %hr
     .footer-section-corporate
       .demo-notice

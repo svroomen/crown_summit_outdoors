@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     customer = Customer.find_by(email: params[:session][:email].downcase)
     if customer && customer.authenticate(params[:session][:password])
       log_in(customer)
-      flash[:notice] = 'Logged in successfully'
+      flash[:notice] = 'Signed in successfully'
       redirect_to home_index_path
     else
       flash.now[:error] = 'Invalid email/password combination'
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:customer_id)
-    flash[:notice] = 'Logged out successfully'
+    flash[:notice] = 'Signed out successfully'
     redirect_to home_index_path
   end
 

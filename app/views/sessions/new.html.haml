@@ -1,10 +1,11 @@
-- provide(:title, 'Log in')
+- provide(:title, 'Sign in')
 .row
   .col-md-6.col-md-offset-3
     %h2 Sign In
+    %hr
 .row
   .col-md-6.col-md-offset-3
-    = form_for :session, url: login_path, html: { class: 'form form-horizontal' } do |f|
+    = form_for :session, url: sign_in_path, html: { class: 'form form-horizontal' } do |f|
       .form-group
         %label.control-label.col-md-2 Email:
         .col-md-10
@@ -20,4 +21,4 @@
         .pull-right
           = button_tag type: :submit, class: 'btn btn-primary log-in-option' do
             %i.fa.fa-sign-in
-            Log in
+            Sign in
