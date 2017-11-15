@@ -1,12 +1,13 @@
 .shop-sign-in-container
-  .pull-left
-    %p SITE DEMO
-  .pull-right
-    - if logged_in?
-      = render partial: 'layouts/header_content/customer_options'
-    - else
-      = link_to 'Sign In / Create Account', login_path, class: 'sign-in'
-    = link_to :back, class: 'inline-block' do
-      %i.fa.fa-shopping-cart.fa-lg
-      %span.cart-item-count 0
-      %span ITEM(S)
+  .container
+    .pull-left
+      %p SITE DEMO
+    .pull-right
+      - if logged_in?
+        = render partial: 'layouts/header_content/customer_options'
+      - else
+        = link_to 'Sign In / Create Account', login_path, class: 'sign-in'
+      = link_to :back, class: 'inline-block' do
+        %i.fa.fa-shopping-cart.fa-lg
+        %span.cart-item-count 0
+        %span ITEM(S)

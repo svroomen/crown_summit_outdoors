@@ -8,7 +8,9 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = render partial: 'layouts/header_content/header'
-    .container
-      = render partial: 'shared/flash_messages', flash: flash
-      = yield
+    #wrapper
+      = render partial: 'layouts/header_content/header'
+      .container
+        = render partial: 'shared/flash_messages', flash: flash
+        = yield
+      = render partial: 'layouts/footer_content/footer'

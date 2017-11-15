@@ -17,6 +17,18 @@
 @import "font-awesome";
 @import "style_sheets/*";
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#wrapper {
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 91px;
+}
+
 @media (min-width: 768px) {
   .navbar-custom .layout-dropdown:hover .dropdown-menu {
     display: block;
@@ -24,10 +36,30 @@
   }
 }
 
+@media (max-width: 716px) {
+  body #wrapper {
+    padding-bottom: 130px;
+  }
+
+  body #wrapper footer {
+    height: 130px;
+  }
+}
+
 @media (max-width: 768px) {
   form .input-group.category-search-drop-down {
     padding-bottom: 5px;
     width: 100%;
+  }
+
+  footer .price-notice {
+    float: left !important;
+  }
+
+  header .navbar-right {
+    .input-group {
+      padding-left: 15px;
+    }
   }
 }
 
@@ -42,7 +74,9 @@
 header {
   min-width: 100%;
   position: relative;
-  background-color: #333;
+  background-color: #FFF;
+  border-bottom: 1px solid rgba(191,191,191,0.5);
+  box-shadow: rgba(0,0,0,0.06) 0 2px 3px 0;
 
   .navbar-default .navbar-brand {
     color: #000000;
@@ -58,10 +92,11 @@ header {
 
   .shop-sign-in-container {
     font-size: 12px;
-    @extend .container;
     padding-top: 7px;
     padding-bottom: 7px;
     color: #DADADA;
+    background-color: #333;
+    background-size: 10000%;
 
     p {
       padding: 0;
@@ -89,9 +124,11 @@ header {
     }
   }
 
-  .navbar-custom {
+  .navbar-default {
     border-radius: 0;
     margin-bottom: 0;
+    background-color: #FFF;
+    border: 0 solid transparent;
   }
 
   .layout-dropdown {
@@ -119,6 +156,72 @@ header {
     ul li a {
       color: #000;
     }
+  }
+}
+
+footer {
+  background-color: #333;
+  border-top: 0 solid transparent;
+  border-bottom: 5px solid #4d4d4d;
+  padding: 0 15px 0 15px;
+  z-index: 2;
+  color: #bfbfbf;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  min-width: 100%;
+  height: 91px;
+  overflow: hidden;
+
+  .footer-content-area {
+    min-height: 50px;
+    padding: 15px 0 15px;
+    font-size: 13px;
+  }
+
+  .footer-section-corporate {
+    min-height: 40px;
+    padding: 10px 0 10px 0;
+    font-size: 13px;
+  }
+
+  .border-right {
+    border-right: 1px solid #4d4d4d;
+  }
+
+  .border-left {
+    border-left: 1px solid #4d4d4d;
+  }
+
+  h3 {
+    color: #FFF;
+  }
+
+  hr {
+    width: 1000%;
+    margin-left: -500%;
+    border-top: 1px solid #4d4d4d;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  a {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  a, a:hover, a:active, a:visited, a:focus {
+    color: #bfbfbf;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .demo-notice {
+    @extend .pull-left;
+  }
+
+  .price-notice {
+    float: right;
   }
 }
 
