@@ -10,26 +10,10 @@
         .text-center
           %h4 Free Standard Shipping *
       .panel-body
-        %h3
-          %strong= "$#{@product.price}"
-
+        %h3.bold= "$#{@product.price}"
         %hr
-
-        = form_for :session, url: add_item_to_cart_path, html: { class: 'form form-horizontal' } do |f|
-          .row
-            = hidden_field_tag :product_id, @product.id
-            .col-xs-12.col-md-6
-              .form-group
-                %label.control-label Size:
-                = f.select :size, @product.size_type == clothing_type ? clothing_size_options : footwear_size_options, {}, {class: 'form-control option-drop-down-left'}
-            .col-xs-12.col-md-6
-              .form-group
-                %label.control-label Quantity:
-                = f.select :size, quantity_options, {}, {class: 'form-control'}
-          .form-group
-            = button_tag type: :submit, class: 'btn btn-success', id: 'add-to-cart' do
-              %i.fa.fa-plus
-              ADD TO CART
+        #add-item-to-cart-form
+          = render partial: 'shopping_carts/form', locals: { product: @product }
       .panel-footer
         %ul
           %li

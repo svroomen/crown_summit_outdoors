@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :load_search_categories
+  before_action :create_shopping_cart
 
   protected
 
@@ -13,5 +14,9 @@ class ApplicationController < ActionController::Base
       session[:search_categories] =
         Category.order(:name).map { |c| [c.name, c.id] }
     end
+  end
+
+  def create_shopping_cart
+    session[:shopping_cart] = {} unless session[:shopping_cart]
   end
 end

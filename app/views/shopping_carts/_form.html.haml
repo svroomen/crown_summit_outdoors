@@ -1,0 +1,18 @@
+- cart_contains_item = session[:shopping_cart][product.id.to_s].present?
+= form_for :shopping_cart, url: shopping_cart_path, html: { class: 'form form-horizontal', remote: true } do |f|
+  .row
+    = hidden_field_tag 'shopping_cart[product_id]', product.id
+    .col-xs-12.col-md-6
+      .form-group
+        %label.control-label Size:
+        = f.select :size, product.size_type == clothing_type ? clothing_size_options : footwear_size_options, {}, {class: 'form-control option-drop-down-left', disabled: cart_contains_item}
+    .col-xs-12.col-md-6
+      .form-group
+        %label.control-label Quantity:
+        = f.select :quantity, quantity_options, {}, {class: 'form-control', disabled: cart_contains_item}
+  .form-group
+    = button_tag type: :submit, class: 'btn btn-success', id: 'add-to-cart', disabled: cart_contains_item do
+      %i.fa.fa-plus
+      ADD TO CART
+    - if cart_contains_item
+      %p.item-already-added-warning You have already added this item to your cart *
