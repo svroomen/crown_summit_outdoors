@@ -1,7 +1,10 @@
 # this class lets you view, add, remove, and edit quantity of items in your cart
 class ShoppingCartsController < ApplicationController
   # view items in your cart
-  def index; end
+  def index
+    product_ids = session[:shopping_cart].keys.map(&:to_i)
+    @products = Product.where(id: product_ids)
+  end
 
   # add an item to your cart
   def create
@@ -20,17 +23,38 @@ class ShoppingCartsController < ApplicationController
 
   # remove an item from your cart
   def destroy
+    @product_id = params[:product_id].to_s
 
+    # remove the item from the session
+    session[:shopping_cart].delete(@product_id)
+
+    calculate_order_total
   end
 
   # increase the quantity of an item in your cart
   def increase_items_count
     # ensure count cannot go above 5
+    s_id = params[:product_id].to_s
+    return if session[:shopping_cart][s_id]['quantity'].to_i >= 5
+
+    session[:shopping_cart][s_id]['quantity'] =
+      session[:shopping_cart][s_id]['quantity'].to_i + 1
+
+    @product = Product.find(params[:product_id].to_i)
+    calculate_order_total
   end
 
   # decrease the quantity of an item in your cart
   def decrease_items_count
     # ensure count cannot go below 1
+    s_id = params[:product_id].to_s
+    return if session[:shopping_cart][s_id]['quantity'].to_i <= 1
+
+    session[:shopping_cart][s_id]['quantity'] =
+      session[:shopping_cart][s_id]['quantity'].to_i - 1
+
+    @product = Product.find(params[:product_id].to_i)
+    calculate_order_total
   end
 
   private
@@ -38,4 +62,14 @@ class ShoppingCartsController < ApplicationController
   def shopping_cart_params
     params.require(:shopping_cart).permit(:product_id, :quantity, :size)
   end
+
+  def calculate_order_total
+    # recalculate the order total
+    @order_total = 0
+    products_ids = session[:shopping_cart].keys.map(&:to_i)
+    Product.where(id: products_ids).each do |p|
+      @order_total += p.price * session[:shopping_cart][p.id.to_s]['quantity'].to_f
+    end
+  end
+
 end

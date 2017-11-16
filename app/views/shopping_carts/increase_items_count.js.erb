@@ -1,0 +1,2 @@
+$('#cart-item-<%= @product.id %>').html("<%= j render partial: 'shopping_carts/cart_item', locals: { product: @product } %>");
+$('#cart-order-summary').html("<%= j render partial: 'shopping_carts/order_summary', locals: { order_total: @order_total.round(2)} %>")

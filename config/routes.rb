@@ -23,11 +23,4 @@ Rails.application.routes.draw do
   delete '/shopping_cart', to: 'shopping_carts#destroy'
   get '/increase_items_count_shopping_cart', to: 'shopping_carts#increase_items_count'
   get '/decrease_items_count_shopping_cart', to: 'shopping_carts#decrease_items_count'
-
-  # resources :shopping_carts, only: %i[index create destroy] do
-  #   member do
-  #     get :increase_items_count
-  #     get :decrease_items_count
-  #   end
-  # end
 end

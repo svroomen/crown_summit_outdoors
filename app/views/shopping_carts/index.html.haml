@@ -1,0 +1,20 @@
+%h2 Shopping Cart
+
+%hr
+
+- if @products.present?
+  - order_total = 0
+  - @products.each { |p| order_total+= (p.price * session[:shopping_cart][p.id.to_s]['quantity'].to_f) }
+  .row
+    .col-md-8
+      = render partial: 'shopping_carts/cart_header_fields'
+      - @products.each do |product|
+        .div{id: "cart-item-#{product.id}"}
+          = render partial: 'shopping_carts/cart_item', locals: { product: product }
+    .col-md-4
+      #cart-order-summary
+        = render partial: 'shopping_carts/order_summary', locals: { order_total: order_total.round(2) }
+- else
+  %h4
+    Your cart appears to be empty.
+    🙁

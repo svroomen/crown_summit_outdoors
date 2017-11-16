@@ -1,0 +1,40 @@
+.panel.panel-default.order-summary-panel
+  .panel-heading
+    %h3.bold
+      %i.fa.fa-shopping-cart
+      Order Summary
+  .panel-body
+    .row
+      .col-md-12
+        %h4
+          .pull-left
+            = 'Estimated Total:'
+          .pull-right
+            = "$#{order_total}"
+    %hr
+    .row
+      .col-md-12
+        %h5
+          .pull-left
+            = 'Merchandise Subtotal:'
+          .pull-right
+            = "$#{order_total}"
+    %hr
+    .row
+      .col-md-12
+        %h5
+          .pull-left
+            = 'Merchandise Savings:'
+          .pull-right
+            = '$0.00'
+
+- if order_total <= 0
+  %btn.btn.btn-danger.btn-lg#checkout-cart{disabled: true}
+    Your cart appears to be empty
+    🙁
+- elsif !logged_in?
+  %btn.btn.btn-warning.btn-lg#checkout-cart{disabled: true} Please sign in to Checkout
+- else
+  = link_to :back, class: 'btn btn-success btn-lg', id: 'checkout-cart' do
+    %i.fa.fa-lock
+    Checkout

@@ -1,0 +1,3 @@
+$('#shopping-cart-preview').html("<%= j render partial: 'shopping_carts/preview' %>");
+$('#cart-item-<%= @product_id %>').remove();
+$('#cart-order-summary').html("<%= j render partial: 'shopping_carts/order_summary', locals: { order_total: @order_total.round(2)} %>")

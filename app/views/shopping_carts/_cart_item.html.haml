@@ -1,0 +1,42 @@
+- cart_item = session[:shopping_cart][product.id.to_s]
+
+.summary-item-container
+  .row
+    .col-md-7.col-sm-7.col-xs-12
+      .row
+        .col-md-5.col-sm-5.col-xs-12
+          = link_to product_path(id: product.id), class: 'inline-block' do
+            = image_tag "#{product.image}", width: '136px', height: '136px'
+        .col-md-7.col-sm-7.col-xs-12
+          %h5= link_to product.name, product_path(id: product.id)
+          %h5
+            Size:
+            = cart_item['size']
+
+    .col-md-1.col-sm-1.col-xs-4
+      %h5.inline.hidden-md.hidden-sm.hidden-lg Qty:
+      %h5.inline.hidden-md.hidden-sm.hidden-lg= cart_item['quantity']
+      %h5.hidden-xs= cart_item['quantity']
+
+      .col-md-12.col-xs-12.item-count-links
+        = link_to decrease_items_count_shopping_cart_path(product_id: product.id), title: 'Decrease item count', remote: true do
+          %i.fa.fa-minus
+        = link_to increase_items_count_shopping_cart_path(product_id: product.id), title: 'Increase item count', remote: true do
+          %i.fa.fa-plus
+
+    .col-md-2.col-sm-2.col-xs-6.hidden-xs
+      %h5= "$#{product.price}"
+
+    .col-md-2.col-sm-2.col-xs-6.hidden-xs
+      %h5= "$#{(product.price * cart_item['quantity'].to_f).round(2)}"
+
+    .col-md-2.col-sm-2.col-xs-8.hidden-sm.hidden-md.hidden-lg
+      .block
+        %h5.inline.hidden-md.hidden-sm.hidden-lg Price:
+        %h5.inline= "$#{product.price}"
+      .block
+        %h5.inline.hidden-md.hidden-sm.hidden-lg Total:
+        %h5.inline= "$#{(product.price * cart_item['quantity'].to_f).round(2)}"
+
+  = link_to shopping_cart_path(product_id: product.id), method: :delete, class: 'remove-cart-item', title: 'Remove item from cart', remote: true, data: { confirm: 'Are you sure you want to remove this item from your cart?' } do
+    %i.fa.fa-times
