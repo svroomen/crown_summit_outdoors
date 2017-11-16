@@ -10,7 +10,7 @@
           .pull-left
             = 'Estimated Total:'
           .pull-right
-            = "$#{order_total}"
+            = currency(order_total)
     %hr
     .row
       .col-md-12
@@ -18,7 +18,7 @@
           .pull-left
             = 'Merchandise Subtotal:'
           .pull-right
-            = "$#{order_total}"
+            = currency(order_total)
     %hr
     .row
       .col-md-12
@@ -35,6 +35,6 @@
 - elsif !logged_in?
   %btn.btn.btn-warning.btn-lg#checkout-cart{disabled: true} Please sign in to Checkout
 - else
-  = link_to :back, class: 'btn btn-success btn-lg', id: 'checkout-cart' do
+  = link_to order_invoice_products_path, class: 'btn btn-success btn-lg', id: 'checkout-cart' do
     %i.fa.fa-lock
     Checkout

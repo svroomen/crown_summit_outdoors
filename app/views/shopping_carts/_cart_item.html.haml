@@ -25,18 +25,18 @@
           %i.fa.fa-plus
 
     .col-md-2.col-sm-2.col-xs-6.hidden-xs
-      %h5= "$#{product.price}"
+      %h5= currency(product.price)
 
     .col-md-2.col-sm-2.col-xs-6.hidden-xs
-      %h5= "$#{(product.price * cart_item['quantity'].to_f).round(2)}"
+      %h5= currency((product.price * cart_item['quantity'].to_f))
 
     .col-md-2.col-sm-2.col-xs-8.hidden-sm.hidden-md.hidden-lg
       .block
         %h5.inline.hidden-md.hidden-sm.hidden-lg Price:
-        %h5.inline= "$#{product.price}"
+        %h5.inline= currency(product.price)
       .block
         %h5.inline.hidden-md.hidden-sm.hidden-lg Total:
-        %h5.inline= "$#{(product.price * cart_item['quantity'].to_f).round(2)}"
+        %h5.inline= currency((product.price * cart_item['quantity'].to_f))
 
   = link_to shopping_cart_path(product_id: product.id), method: :delete, class: 'remove-cart-item', title: 'Remove item from cart', remote: true, data: { confirm: 'Are you sure you want to remove this item from your cart?' } do
     %i.fa.fa-times

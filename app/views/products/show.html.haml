@@ -10,7 +10,7 @@
         .text-center
           %h4 Free Standard Shipping *
       .panel-body
-        %h3.bold= "$#{@product.price}"
+        %h3.bold= currency(@product.price)
         %hr
         #add-item-to-cart-form
           = render partial: 'shopping_carts/form', locals: { product: @product }

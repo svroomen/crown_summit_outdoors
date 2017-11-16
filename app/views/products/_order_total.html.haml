@@ -1,0 +1,69 @@
+.panel.panel-default.order-summary-panel
+  .panel-heading
+    %h3.bold
+      %i.fa.fa-shopping-cart
+      Order Summary
+  .panel-body
+    .row
+      .col-md-12
+        %h5
+          .pull-left
+            = 'Subtotal:'
+          .pull-right
+            = currency(details[:subtotal])
+    %hr
+    - unless details[:pst_cost].zero?
+      .row
+        .col-md-12
+          %h5
+            .pull-left
+              = 'PST:'
+            .pull-right
+              = currency(details[:pst_cost])
+      %hr
+    - unless details[:gst_cost].zero?
+      .row
+        .col-md-12
+          %h5
+            .pull-left
+              = 'GST:'
+            .pull-right
+              = currency(details[:gst_cost])
+      %hr
+    - unless details[:hst_cost].zero?
+      .row
+        .col-md-12
+          %h5
+            .pull-left
+              = 'HST:'
+            .pull-right
+              = currency(details[:hst_cost])
+      %hr
+    .row
+      .col-md-12
+        %h5
+          .pull-left
+            = 'Merchandise Savings:'
+          .pull-right
+            = '$0.00'
+    %hr
+    .row
+      .col-md-12
+        %h5
+          .pull-left
+            = 'Shipping Charges:'
+          .pull-right
+            = '$0.00'
+
+  .panel-footer
+    .row
+      .col-md-12
+        %h4.order-total
+          .pull-left
+            = 'Order Total:'
+          .pull-right
+            = currency(details[:total])
+
+= link_to process_order_products_path, class: 'btn btn-success btn-lg', id: 'checkout-cart' do
+  %i.fa.fa-lock
+  Submit Order

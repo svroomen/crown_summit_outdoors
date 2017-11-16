@@ -4,7 +4,10 @@ module SessionsHelper
   end
 
   def current_customer
-    @current_customer ||= Customer.where(id: session[:customer_id]).first
+    @current_customer ||=
+      Customer.includes(:province, :country).where(
+        id: session[:customer_id]
+      ).first
   end
 
   def logged_in?
