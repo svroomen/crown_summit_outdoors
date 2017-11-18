@@ -1,9 +1,22 @@
 .panel.panel-default.order-summary-panel
   .panel-heading
     %h3.bold
-      %i.fa.fa-shopping-cart
-      Order Summary
+      - if already_submitted
+        %i.fa.fa-shopping-bag
+        Details
+      - else
+        %i.fa.fa-shopping-cart
+        Order Summary
   .panel-body
+    - if already_submitted
+      .row
+        .col-md-12
+          %h5
+            .pull-left
+              = 'Status:'
+            .pull-right
+              = status
+      %hr
     .row
       .col-md-12
         %h5
@@ -60,10 +73,11 @@
       .col-md-12
         %h4.order-total
           .pull-left
-            = 'Order Total:'
+            = already_submitted ? 'Total:' : 'Order Total:'
           .pull-right
             = currency(details[:total])
 
-= link_to submit_order_path, class: 'btn btn-success btn-lg', id: 'checkout-cart' do
-  %i.fa.fa-lock
-  Submit Order
+- unless already_submitted
+  = link_to submit_order_path, class: 'btn btn-success btn-lg', id: 'checkout-cart' do
+    %i.fa.fa-lock
+    Submit Order

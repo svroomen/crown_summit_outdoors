@@ -1,10 +1,15 @@
 # used to process orders
 class OrdersController < ApplicationController
   include SessionsHelper
-  before_action :check_if_logged_in, only: %i[invoice submit_order]
+  before_action :check_if_logged_in, only: %i[show invoice submit_order]
 
   def show
+    @order = Order.find(params[:id])
 
+    # ensure the order belongs to the customer trying to look at it
+    order_belongs_to_customer?(@order)
+
+    calculate_costs(@order)
   end
 
   def invoice
@@ -34,6 +39,26 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def calculate_costs(order)
+    subtotal = 0
+    order.order_items.each { |i| subtotal += (i.price * i.quantity.to_f) }
+
+    pst_cost = (order.pst_rate * subtotal).round(2)
+    gst_cost = (order.gst_rate * subtotal).round(2)
+    hst_cost = (order.hst_rate * subtotal).round(2)
+    total = subtotal + pst_cost + gst_cost + hst_cost
+
+    @costs = { pst_cost: pst_cost, gst_cost: gst_cost, hst_cost: hst_cost,
+               subtotal: subtotal.round(2), total: total.round(2) }
+  end
+
+  def order_belongs_to_customer?(order)
+    unless order.customer_id == current_customer.id
+      flash[:error] = 'Unauthorized, please login'
+      redirect_to home_index_path
+    end
+  end
 
   def load_clean_cart
     @cart = {}

@@ -1,0 +1,36 @@
+%h2
+  = "Order ##{@order.order_no}"
+  .pull-right
+    = link_to customer_path(id: current_customer.id), class: 'header-link' do
+      %i.fa.fa-caret-left
+      Back
+%hr
+
+.row
+  .col-md-8
+    %h3 Items
+    %table.table.table-striped
+      %thead
+        %tr.row
+          %th Product
+          %th
+          %th Qty
+          %th Price
+          %th Total
+      %tbody
+        - @order.order_items.each do |item|
+          %tr.row
+            %td.col-md-2.col-sm-2.col-xs-2
+              = image_tag "#{item.product.image}", width: '96px', height: '96px'
+            %td.col-md-5.col-sm-5.col-xs-5
+              %h5
+                = item.product.name
+                = item.size
+            %td.col-md-1.col-sm-1.col-xs-1
+              %h5= item.quantity
+            %td.col-md-2.col-sm-2.col-xs-2
+              %h5= currency(item.price)
+            %td.col-md-2.col-sm-2.col-xs-2
+              %h5= currency((item.price * item.quantity.to_f))
+  .col-md-4
+    = render partial: 'orders/order_total', locals: { details: @costs, already_submitted: true, status: @order.status.title }

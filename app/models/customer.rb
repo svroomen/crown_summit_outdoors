@@ -17,4 +17,8 @@ class Customer < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def recent_orders
+    orders.includes(:order_items).where('created_at >= ?', 2.weeks.ago).order(created_at: :desc)
+  end
 end
