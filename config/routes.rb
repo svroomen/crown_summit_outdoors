@@ -5,13 +5,14 @@ Rails.application.routes.draw do
 
   root 'home#index'
   resources :home, only: :index
+
   resources :customers, except: %i[index destroy]
-  resources :products, only: %i[index show] do
-    collection do
-      get :order_invoice
-      get :process_order
-    end
-  end
+
+  resources :products, only: %i[index show]
+
+  resources :orders, only: :show
+  get '/order_invoice', to: 'orders#invoice'
+  get '/submit_order', to: 'orders#submit_order'
 
   # log in routes
   get    '/sign_in',   to: 'sessions#new'

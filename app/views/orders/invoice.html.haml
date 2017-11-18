@@ -41,4 +41,4 @@
 
   .col-md-4
     #cart-order-summary
-      = render partial: 'products/order_total', locals: { details: calculate_order_costs(@products, @cart) }
+      = render partial: 'orders/order_total', locals: { details: calculate_order_costs(@products, @cart) }

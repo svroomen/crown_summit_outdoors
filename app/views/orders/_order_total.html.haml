@@ -64,6 +64,6 @@
           .pull-right
             = currency(details[:total])
 
-= link_to process_order_products_path, class: 'btn btn-success btn-lg', id: 'checkout-cart' do
+= link_to submit_order_path, class: 'btn btn-success btn-lg', id: 'checkout-cart' do
   %i.fa.fa-lock
   Submit Order
