@@ -3,7 +3,7 @@ class Customer < ApplicationRecord
 
   belongs_to :country, inverse_of: :customers
   belongs_to :province, inverse_of: :customers
-  has_many :orders, inverse_of: :customer
+  has_many :orders, inverse_of: :customer, dependent: :restrict_with_error
 
   validates_presence_of :first_name, :last_name, :address, :postal_code, :email,
                         :country_id, :province_id, :city
