@@ -368,6 +368,7 @@ author_id</ColNames>
     <column id="92" parent="12" name="size">
       <Position>7</Position>
       <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
     </column>
     <index id="93" parent="12" name="index_order_items_on_product_id">
       <ColNames>product_id</ColNames>
