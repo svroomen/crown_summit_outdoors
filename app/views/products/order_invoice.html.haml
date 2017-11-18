@@ -3,6 +3,41 @@
 
 .row
   .col-md-8
+    %h3= "Shipping Information for #{current_customer.full_name}"
+    %address
+      %h5= current_customer.address
+      %h5= "#{current_customer.city}, #{current_customer.province.name} #{current_customer.postal_code}"
+      %h5= current_customer.country.name
+
+    %hr
+
+    %h3 Order Items
+    %table.table.table-striped
+      %thead
+        %tr.row
+          %th Product
+          %th
+          %th Qty
+          %th Price
+          %th Total
+      %tbody
+        - @products.each do |product|
+
+          %tr.row
+            %td.col-md-2.col-sm-2.col-xs-2
+              = image_tag "#{product.image}", width: '96px', height: '96px'
+            %td.col-md-5.col-sm-5.col-xs-5
+              %h5
+                = product.name
+                = @cart[product.id][:size]
+            %td.col-md-1.col-sm-1.col-xs-1
+              %h5= @cart[product.id][:quantity]
+            %td.col-md-2.col-sm-2.col-xs-2
+              %h5= currency(product.price)
+            %td.col-md-2.col-sm-2.col-xs-2
+              %h5= currency((product.price * @cart[product.id][:quantity].to_f))
+
+
 
   .col-md-4
     #cart-order-summary
