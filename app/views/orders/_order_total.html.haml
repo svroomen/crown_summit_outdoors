@@ -11,71 +11,48 @@
     - if already_submitted
       .row
         .col-md-12
-          %h5
-            .pull-left
-              = 'Status:'
-            .pull-right
-              = status
+          %h5.pull-left= 'Status:'
+          %h5.pull-right= status
       %hr
     .row
       .col-md-12
-        %h5
-          .pull-left
-            = 'Subtotal:'
-          .pull-right
-            = currency(details[:subtotal])
+        %h5.pull-left= 'Subtotal:'
+        %h5.pull-right= currency(details[:subtotal])
     %hr
     - unless details[:pst_cost].zero?
       .row
         .col-md-12
-          %h5
-            .pull-left
-              = 'PST:'
-            .pull-right
-              = currency(details[:pst_cost])
+          %h5.pull-left= 'PST:'
+          %h5.pull-right= currency(details[:pst_cost])
       %hr
     - unless details[:gst_cost].zero?
       .row
         .col-md-12
-          %h5
-            .pull-left
-              = 'GST:'
-            .pull-right
-              = currency(details[:gst_cost])
+          %h5.pull-left= 'GST:'
+          %h5.pull-right= currency(details[:gst_cost])
       %hr
     - unless details[:hst_cost].zero?
       .row
         .col-md-12
-          %h5
-            .pull-left
-              = 'HST:'
-            .pull-right
-              = currency(details[:hst_cost])
+          %h5.pull-left= 'HST:'
+          %h5.pull-right= currency(details[:hst_cost])
       %hr
     .row
       .col-md-12
-        %h5
-          .pull-left
-            = 'Merchandise Savings:'
-          .pull-right
-            = '$0.00'
+        %h5.pull-left= 'Merchandise Savings:'
+        %h5.pull-right= '$0.00'
     %hr
     .row
       .col-md-12
-        %h5
-          .pull-left
-            = 'Shipping Charges:'
-          .pull-right
-            = '$0.00'
+        %h5.pull-left= 'Shipping Charges:'
+        %h5.pull-right= '$0.00'
 
   .panel-footer
     .row
       .col-md-12
-        %h4.order-total
-          .pull-left
-            = already_submitted ? 'Total:' : 'Order Total:'
-          .pull-right
-            = currency(details[:total])
+        .order-total
+          %h4.pull-left= already_submitted ? 'Total:' : 'Order Total:'
+          %h4.pull-right= currency(details[:total])
 
 - unless already_submitted
   = link_to submit_order_path, class: 'btn btn-success btn-lg', id: 'checkout-cart' do

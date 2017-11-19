@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
     order = create_order
 
     # add items to the order based off what is in the cart
-    add_order_items(order)
+    add_order_items(order, @products)
 
     # now empty the cart since the order has been submitted
     session[:shopping_cart] = {}
@@ -87,9 +87,9 @@ class OrdersController < ApplicationController
     )
   end
 
-  def add_order_items(order)
+  def add_order_items(order, products)
     # create an order item for each of the products in the cart
-    @products.each do |product|
+    products.each do |product|
       order.order_items.create!(
         quantity: @cart[product.id][:quantity],
         price: product.price,

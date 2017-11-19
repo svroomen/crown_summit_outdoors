@@ -6,27 +6,18 @@
   .panel-body
     .row
       .col-md-12
-        %h4
-          .pull-left
-            = 'Estimated Total:'
-          .pull-right
-            = currency(order_total)
+        %h4.pull-left= 'Estimated Total:'
+        %h4.pull-right= currency(order_total)
     %hr
     .row
       .col-md-12
-        %h5
-          .pull-left
-            = 'Merchandise Subtotal:'
-          .pull-right
-            = currency(order_total)
+        %h5.pull-left= 'Merchandise Subtotal:'
+        %h5.pull-right= currency(order_total)
     %hr
     .row
       .col-md-12
-        %h5
-          .pull-left
-            = 'Merchandise Savings:'
-          .pull-right
-            = '$0.00'
+        %h5.pull-left= 'Merchandise Savings:'
+        %h5.pull-right= '$0.00'
 
 - if order_total <= 0
   %btn.btn.btn-danger.btn-lg#checkout-cart{disabled: true}

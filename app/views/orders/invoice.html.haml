@@ -5,9 +5,11 @@
   .col-md-8
     %h3= "Shipping Information for #{current_customer.full_name}"
     %address
-      %h5= current_customer.address
-      %h5= "#{current_customer.city}, #{current_customer.province.name} #{current_customer.postal_code}"
-      %h5= current_customer.country.name
+      %strong= current_customer.address
+      %br
+      %strong= "#{current_customer.city}, #{current_customer.province.name} #{current_customer.postal_code}"
+      %br
+      %strong= current_customer.country.name
 
     %hr
 
@@ -25,7 +27,7 @@
 
           %tr.row
             %td.col-md-2.col-sm-2.col-xs-2
-              = image_tag "#{product.image}", width: '96px', height: '96px'
+              = image_tag "#{product.image}", class: 'image-size-min'
             %td.col-md-5.col-sm-5.col-xs-5
               %h5
                 = product.name

@@ -6,7 +6,7 @@
       .row
         .col-md-5.col-sm-5.col-xs-12
           = link_to product_path(id: product.id), class: 'inline-block' do
-            = image_tag "#{product.image}", width: '136px', height: '136px'
+            = image_tag "#{product.image}", class: 'image-size-mid'
         .col-md-7.col-sm-7.col-xs-12
           %h5= link_to product.name, product_path(id: product.id)
           %h5

@@ -1,9 +1,8 @@
 %h2
   = "Order ##{@order.order_no}"
-  .pull-right
-    = link_to customer_path(id: current_customer.id), class: 'header-link' do
-      %i.fa.fa-caret-left
-      Back
+  = link_to customer_path(id: current_customer.id), class: 'header-link pull-right' do
+    %i.fa.fa-caret-left
+    Back
 %hr
 
 .row
@@ -21,7 +20,7 @@
         - @order.order_items.each do |item|
           %tr.row
             %td.col-md-2.col-sm-2.col-xs-2
-              = image_tag "#{item.product.image}", width: '96px', height: '96px'
+              = image_tag "#{item.product.image}", class: 'image-size-min'
             %td.col-md-5.col-sm-5.col-xs-5
               %h5
                 = item.product.name

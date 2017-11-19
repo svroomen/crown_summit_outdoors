@@ -2,7 +2,7 @@
   .product-container
     .image-preview-container
       = link_to product_path(id: product.id) do
-        = image_tag "#{product.image}", width: '100%', height: '100%'
+        = image_tag "#{product.image}", class: 'image-size-max'
     %hr
     .product-preview-info
       %h4= "$#{product.price}"
