@@ -18,6 +18,8 @@ class ProductSearch
     products = products.where(category_id: category_id) unless category_id.nil?
     products = products.where(size_type: @size_type) unless @size_type.blank?
     unless @product_key_word.blank?
+      @product_key_word = ActiveRecord::Base.send(:sanitize_sql_like, @product_key_word)
+
       products = products.where('(name like ?) OR (description like ?)',
                                 "%#{@product_key_word}%",
                                 "%#{@product_key_word}%")
