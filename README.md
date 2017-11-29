@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple e-commerce rails application, that is used for academic purposes. The code, and structure of the code inside, is documented at points that may be confusing, and can be used as an example for how you may want to structure your code in your own projects.
 
-Things you may want to cover:
+Version Information:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby version 2.4.1
+* Rails version 5.1
