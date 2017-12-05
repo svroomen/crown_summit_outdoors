@@ -28,3 +28,6 @@ Seeds::Countries.seed_countries
 
 # province data
 Seeds::Provinces.seed_provinces
+
+# seed site information
+Seeds::SiteInformation.seed_site_information
